@@ -1,35 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
+//이렇게 상단에 가져와 사용할 이미지를 불러옵니다
+import favicon from "./assets/favicon.png"
 
 export default function App() {
-  const customAlert = () => {
-    Alert.alert("TouchableOpacity에도 onPress 속성이 있습니다")
-  }
   return (
-    //onPress 속성을 붙여 누를 수 있는 영역
-    <ScrollView style={styles.container}>
-      <TouchableOpacity style={styles.textContainer} onPress={customAlert}>
-        <Text style={styles.textStyle}>영역을 충분히 갖는 텍스트 입니다!</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.textContainer} onPress={customAlert}>
-        <Text style={styles.textStyle}>영역을 충분히 갖는 텍스트 입니다!</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.textContainer} onPress={customAlert}>
-        <Text style={styles.textStyle}>영역을 충분히 갖는 텍스트 입니다!</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.textContainer} onPress={customAlert}>
-        <Text style={styles.textStyle}>영역을 충분히 갖는 텍스트 입니다!</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.textContainer} onPress={customAlert}>
-        <Text style={styles.textStyle}>영역을 충분히 갖는 텍스트 입니다!</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.textContainer} onPress={customAlert}>
-        <Text style={styles.textStyle}>영역을 충분히 갖는 텍스트 입니다!</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.textContainer} onPress={customAlert}>
-        <Text style={styles.textStyle}>영역을 충분히 갖는 텍스트 입니다!</Text>
-      </TouchableOpacity>
-    </ScrollView>
+    <View style={styles.container}>
+			{/*이미지 태그 soruce 부분에 가져온 미지 이름을 넣습니다 */}
+      <Image 
+        source={favicon}
+				// 사용설명서에 나와 있는 resizeMode 속성 값을 그대로 넣어 적용합니다
+        resizeMode={"repeat"}
+        style={styles.imageStyle}
+      />
+    </View>
   );
 }
 
@@ -37,15 +21,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    //혹시 미리 궁금하신 분들을 위해 언급하자면,
+    //justifyContent와 alignContent는 영역 안에 있는 콘텐츠들을 정렬합니다
+    justifyContent:"center",
+    alignContent:"center"
   },
-  textContainer: {
-    height:100,
-    borderColor:'#000',
-    borderWidth:1,
-    borderRadius:10,
-    margin:10,
-  },
-  textStyle: {
-    textAlign:"center"
+  imageStyle: {
+    width:"100%",
+    height:"100%",
+    alignItems:"center",
+    justifyContent:"center"
   }
 });
