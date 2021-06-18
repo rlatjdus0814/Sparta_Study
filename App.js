@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-//flex-start(처음), center(중앙), flex-end(끝)
+//flexDirection와 반대로 배치
 export default function App() {
   return (
     <View style={styles.container}>
@@ -13,7 +13,7 @@ export default function App() {
          
         </View>
         <View style={styles.innerTwo}>
-          <Text>!!컨텐츠!!</Text>
+          <View style={styles.content}></View>
         </View>
 
       </View>
@@ -40,7 +40,12 @@ const styles = StyleSheet.create({
   },
   innerTwo: {
     flex:4,
-    justifyContent:"flex-start",
-    backgroundColor:"orange"
+    backgroundColor:"orange",
+    alignItems:"flex-end"
+  },
+  content: {
+    width:50,
+    height:50,
+    backgroundColor:"#000"
   }
 });
