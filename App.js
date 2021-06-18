@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+//flexDirection: "row"는 좌우 배치
+//flexDirection의 default는 column
 export default function App() {
   return (
     <View style={styles.container}>
@@ -12,7 +14,7 @@ export default function App() {
 
         </View>
         <View style={styles.innerTwo}>
-
+          
         </View>
 
       </View>
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
   },
   containerTwo:{
     flex:2,
+    flexDirection:"row",
     backgroundColor:"yellow"
   },
   innerOne: {
