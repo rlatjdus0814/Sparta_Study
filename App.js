@@ -8,6 +8,12 @@ export default function App() {
 
       </View>
       <View style={styles.containerTwo}>
+        <View style={styles.innerOne}>
+
+        </View>
+        <View style={styles.innerTwo}>
+
+        </View>
 
       </View>
     </View>
@@ -25,5 +31,13 @@ const styles = StyleSheet.create({
   containerTwo:{
     flex:2,
     backgroundColor:"yellow"
+  },
+  innerOne: {
+    flex:1,
+    backgroundColor:"blue"
+  },
+  innerTwo: {
+    flex:4,
+    backgroundColor:"orange"
   }
 });
