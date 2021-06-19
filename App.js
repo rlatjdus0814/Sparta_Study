@@ -1,141 +1,72 @@
-import React from 'react';
-import main from './assets/main.png';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
-import data from './data.json';
-export default function App() {
-  console.disableYellowBox = true;
+import React from 'react'
+import {View,Text,StyleSheet,Image, TouchableOpacity} from 'react-native'
 
-  let tip = data.tip;
-  let todayWeather = 10 + 17;
-  let todayCondition = "흐림"
-
+export default function AboutPage(){
+  const aboutImage = "https://firebasestorage.googleapis.com/v0/b/sparta-image.appspot.com/o/lecture%2FaboutImage.png?alt=media&token=13e1c4f6-b802-4975-9773-e305fc7475c4"
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>나만의 꿀팁</Text>
-      <Text style={styles.weather}>오늘의 날씨: {todayWeather + '°C ' + todayCondition} </Text>
-      <Image style={styles.mainImage} source={main}/>
-      <ScrollView style={styles.middleContainer} horizontal indicatorStyle={"white"}>
-        <TouchableOpacity style={styles.middleButton01}><Text style={styles.middleButtonText}>생활</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.middleButton02}><Text style={styles.middleButtonText}>재테크</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.middleButton03}><Text style={styles.middleButtonText}>반려견</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.middleButton04}><Text style={styles.middleButtonText}>꿀팁 찜</Text></TouchableOpacity>
-      </ScrollView>
-      <View style={styles.cardContainer}>
-         { 
-          tip.map((content,i)=>{
-            return (
-              <View style={styles.card} key={i}>
-                <Image style={styles.cardImage} source={{uri:content.image}}/>
-                <View style={styles.cardText}>
-                  <Text style={styles.cardTitle} numberOfLines={1}>{content.title}</Text>
-                  <Text style={styles.cardDesc} numberOfLines={3}>{content.desc}</Text>
-                  <Text style={styles.cardDate}>{content.date}</Text>
-                </View>
-              </View>
-            )
-          })
-         }
+    <View style={styles.container}>
+      <Text style={styles.title}>HI! 스파르타코딩 앱개발 반에 오신것을 환영합니다</Text>
+      <View style={styles.textContainer}>
+        <Image style={styles.aboutImage} source={{uri:aboutImage}} resizeMode={"cover"}/>
+        <Text style={styles.desc01}>많은 내용을 간결하게 담아내려 노력했습니다!</Text>
+        <Text style={styles.desc02}>꼭 완주 하셔서 꼭 여러분것으로 만들어가시길 바랍니다</Text>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>여러분의 인스타계정</Text>
+        </TouchableOpacity>
       </View>
-    </ScrollView>
-  );
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+      flex:1,
+      backgroundColor:"#1F266A",
+      alignItems:"center",
   },
   title: {
-    fontSize: 20,
-    fontWeight: '700',
-    marginTop:50,
-    marginLeft:20,
+      fontSize:30,
+      fontWeight:"700",
+      color:"#fff",
+      paddingLeft:30,
+      paddingTop:100,
+      paddingRight:30,
   },
-  weather:{
-    alignSelf:"flex-end",
-    paddingRight:20,
+  textContainer: {
+      width:300,
+      height:500,
+      backgroundColor:"#fff",
+      marginTop:50,
+      borderRadius:30,
+      justifyContent:"center",
+      alignItems:"center",
   },
-  mainImage: {
-    width:'90%',
-    height:200,
-    borderRadius:10,
-    marginTop:20,
-    alignSelf:"center",
+  aboutImage:{
+      width:150,
+      height:150,
+      borderRadius:30,
   },
-  middleContainer:{
-    marginTop:20,
-    marginLeft:10,
-    height:60,
+  desc01: {
+      textAlign:"center",
+      fontSize:20,
+      fontWeight:"700",
+      paddingLeft:22,
+      paddingRight:22,
   },
-  middleButton01: {
-    width:100,
-    height:50,
-    padding:15,
-    backgroundColor:"#fdc453",
-    borderColor:"deeppink",
-    borderRadius:15,
-    margin:7,
+  desc02: {
+      textAlign:"center",
+      fontSize:15,
+      fontWeight:"700",
+      padding:22,
   },
-  middleButton02: {
-    width:100,
-    height:50,
-    padding:15,
-    backgroundColor:"#fe8d6f",
-    borderRadius:15,
-    margin:7,
+  button:{
+      backgroundColor:"orange",
+      padding:20,
+      borderRadius:15,
   },
-  middleButton03: {
-    width:100,
-    height:50,
-    padding:15,
-    backgroundColor:"#9adbc5",
-    borderRadius:15,
-    margin:7,
+  buttonText: {
+      color:"#fff",
+      fontSize:15,
+      fontWeight:"700",
   },
-  middleButtonText: {
-    color:"#fff",
-    fontWeight:"700",
-    textAlign:"center",
-  },
-  middleButton04: {
-    width:100,
-    height:50,
-    padding:15,
-    backgroundColor:"#f886a8",
-    borderRadius:15,
-    margin:7,
-  },
-  cardContainer: {
-    marginTop:10,
-    marginLeft:10,
-  },
-  card:{
-    flex:1,
-    flexDirection:"row",
-    margin:10,
-    borderBottomWidth:0.5,
-    borderBottomColor:"#eee",
-    paddingBottom:10,
-  },
-  cardImage: {
-    flex:1,
-    width:100,
-    height:100,
-    borderRadius:10,
-  },
-  cardText: {
-    flex:2,
-    flexDirection:"column",
-    marginLeft:10,
-  },
-  cardTitle: {
-    fontSize:20,
-    fontWeight:"700"
-  },
-  cardDesc: {
-    fontSize:15,
-  },
-  cardDate: {
-    fontSize:10,
-    color:"#A6A6A6",
-  },
-});
+})
