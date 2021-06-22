@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView} from 'reac
 import data from '../data.json';
 import Card from '../components/Card';
 import Loading from '../components/Loading';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   console.disableYellowBox = true;
@@ -35,6 +36,7 @@ export default function App() {
 
   return ready ? <Loading/> : (
     <ScrollView style={styles.container}>
+      <StatusBar style="black" />
       <Text style={styles.title}>나만의 꿀팁</Text>
       <Text style={styles.weather}>오늘의 날씨: {todayWeather + '°C ' + todayCondition} </Text>
       <Image style={styles.mainImage} source={main}/>
@@ -125,9 +127,9 @@ const styles = StyleSheet.create({
     margin:7,
   },
   middleButtonTextAll: {
-    color:"#fff",
-    fontWeight:"700",
-    textAlign:"center"
+    color: "#fff",
+    fontWeight: "700",
+    textAlign: "center"
   },
   middleButtonText: {
     color:"#fff",
