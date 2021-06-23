@@ -1,10 +1,24 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {View,Text,StyleSheet,Image, TouchableOpacity} from 'react-native'
+import { StatusBar } from 'expo-status-bar';
 
-export default function AboutPage(){
+export default function AboutPage({navigation}){
   const aboutImage = "https://firebasestorage.googleapis.com/v0/b/sparta-image.appspot.com/o/lecture%2FaboutImage.png?alt=media&token=13e1c4f6-b802-4975-9773-e305fc7475c4"
+
+  useEffect(()=>{
+    navigation.setOptions({
+      title: "소개 페이지",
+      headerStyle: {
+        backgroundColor: '#1F266A',
+        shadowColor: "#1F266A",
+      },
+      headerTintColor: "#fff",
+    })
+  },[])
+
   return (
     <View style={styles.container}>
+      <StatusBar style="light" />
       <Text style={styles.title}>HI! 스파르타코딩 앱개발 반에 오신것을 환영합니다</Text>
       <View style={styles.textContainer}>
         <Image style={styles.aboutImage} source={{uri:aboutImage}} resizeMode={"cover"}/>
@@ -29,14 +43,14 @@ const styles = StyleSheet.create({
       fontWeight: "700",
       color: "#fff",
       paddingLeft: 30,
-      paddingTop: 70,
+      paddingTop: 20,
       paddingRight: 30,
   },
   textContainer: {
       width: 300,
       height: 500,
       backgroundColor: "#fff",
-      marginTop: 50,
+      marginTop: 40,
       borderRadius: 30,
       justifyContent: "center",
       alignItems: "center",

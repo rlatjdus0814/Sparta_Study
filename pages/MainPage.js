@@ -41,6 +41,9 @@ export default function MainPage({navigation, route}) {
     <ScrollView style={styles.container}>
       <StatusBar style="black" />
       <Text style={styles.weather}>오늘의 날씨: {todayWeather + '°C ' + todayCondition} </Text>
+      <TouchableOpacity style={styles.aboutButton} onPress={()=>{navigation.navigate('AboutPage')}}>
+        <Text style={styles.aboutButtonText}>소개 페이지</Text>
+      </TouchableOpacity>
       <Image style={styles.mainImage} source={main}/>
       <ScrollView style={styles.middleContainer} horizontal indicatorStyle={"white"}>
         <TouchableOpacity style={styles.middleButtonAll} onPress={()=>{category('전체보기')}}><Text style={styles.middleButtonTextAll}>전체보기</Text></TouchableOpacity>
@@ -68,6 +71,21 @@ const styles = StyleSheet.create({
     alignSelf:"flex-end",
     paddingRight:20,
     marginTop: 20,
+  },
+  aboutButton: {
+    backgroundColor: "pink",
+    width: 100,
+    height: 40,
+    borderRadius: 10,
+    justifyContent: "center",
+    alignSelf: "flex-end",
+    marginTop: 10,
+    marginRight: 20,
+  },
+  aboutButtonText: {
+    color: "#fff",
+    fontWeight: "700",
+    textAlign: "center",
   },
   mainImage: {
     width:'90%',
