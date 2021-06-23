@@ -30,13 +30,22 @@ export default function DetailPage({navigation,route}){
       Alert.alert("팝업!!")
   }
 
+  const share = () => {
+    Share.share({
+        message:`${tip.title} \n\n ${tip.desc} \n\n ${tip.image}`,
+    });
+  }
+
   return (
     <ScrollView style={styles.container}>
       <Image style={styles.image} source={{uri:tip.image}} />
       <View style={styles.textContainer}>
         <Text style={styles.title}>{tip.title}</Text>
         <Text style={styles.desc}>{tip.desc}</Text>
-        <TouchableOpacity style={styles.button} onPress={()=>popup()}><Text style={styles.buttonText}>팁 찜하기</Text></TouchableOpacity>      
+        <View style={styles.buttonGroup}>
+          <TouchableOpacity style={styles.button} onPress={()=>popup()}><Text style={styles.buttonText}>팁 찜하기</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={()=>share()}><Text style={styles.buttonText}>팁 공유하기</Text></TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   )
