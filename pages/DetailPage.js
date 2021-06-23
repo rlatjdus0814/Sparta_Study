@@ -32,8 +32,12 @@ export default function DetailPage({navigation,route}){
 
   const share = () => {
     Share.share({
-        message:`${tip.title} \n\n ${tip.desc} \n\n ${tip.image}`,
+      message:`${tip.title} \n\n ${tip.desc} \n\n ${tip.image}`,
     });
+  }
+
+  const link = () => {
+    Linking.openURL("https://spartacodingclub.kr")
   }
 
   return (
@@ -43,8 +47,15 @@ export default function DetailPage({navigation,route}){
         <Text style={styles.title}>{tip.title}</Text>
         <Text style={styles.desc}>{tip.desc}</Text>
         <View style={styles.buttonGroup}>
-          <TouchableOpacity style={styles.button} onPress={()=>popup()}><Text style={styles.buttonText}>팁 찜하기</Text></TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={()=>share()}><Text style={styles.buttonText}>팁 공유하기</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={()=>popup()}>
+            <Text style={styles.buttonText}>팁 찜하기</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={()=>share()}>
+            <Text style={styles.buttonText}>팁 공유하기</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={()=>link()}>
+            <Text style={styles.buttonText}>외부 링크</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
