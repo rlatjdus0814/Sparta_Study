@@ -6,7 +6,7 @@ import Card from '../components/Card';
 import Loading from '../components/Loading';
 import { StatusBar } from 'expo-status-bar';
 
-export default function App() {
+export default function MainPage({navigation, route}) {
   console.disableYellowBox = true;
   const [state,setState] = useState([])
   const [cateState,setCateState] = useState([])
@@ -14,6 +14,9 @@ export default function App() {
 
   useEffect(()=>{
     setTimeout(()=>{
+      navigation.setOptions({
+        title:'나만의 꿀팁'
+      })
       let tip = data.tip;
       setState(tip)
       setCateState(tip)
@@ -37,7 +40,6 @@ export default function App() {
   return ready ? <Loading/> : (
     <ScrollView style={styles.container}>
       <StatusBar style="black" />
-      <Text style={styles.title}>나만의 꿀팁</Text>
       <Text style={styles.weather}>오늘의 날씨: {todayWeather + '°C ' + todayCondition} </Text>
       <Image style={styles.mainImage} source={main}/>
       <ScrollView style={styles.middleContainer} horizontal indicatorStyle={"white"}>
@@ -50,7 +52,7 @@ export default function App() {
       <View style={styles.cardContainer}>
          { 
           cateState.map((content,i)=>{
-            return ( <Card key={i} content={content} /> )
+            return ( <Card content={content} key={i} navigation={navigation}/> )
           })
          }
       </View>
@@ -62,15 +64,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: '700',
-    marginTop:50,
-    marginLeft:20,
-  },
   weather:{
     alignSelf:"flex-end",
     paddingRight:20,
+    marginTop: 20,
   },
   mainImage: {
     width:'90%',
