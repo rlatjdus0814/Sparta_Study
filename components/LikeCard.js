@@ -1,7 +1,7 @@
 import React from "react"
 import {View, Text, Image, StyleSheet, TouchableOpacity} from "react-native";
 
-export default function Card({content, navigation}) {
+export default function LikeCard({content, navigation}) {
   return (
     <TouchableOpacity style={styles.card} onPress={()=>{navigation.navigate('DetailPage', content)}}>
       <Image style={styles.cardImage} source={{uri:content.image}}/>

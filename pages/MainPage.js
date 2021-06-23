@@ -50,7 +50,7 @@ export default function MainPage({navigation, route}) {
         <TouchableOpacity style={styles.middleButton01} onPress={()=>{category('생활')}}><Text style={styles.middleButtonText}>생활</Text></TouchableOpacity>
         <TouchableOpacity style={styles.middleButton02} onPress={()=>{category('재테크')}}><Text style={styles.middleButtonText}>재테크</Text></TouchableOpacity>
         <TouchableOpacity style={styles.middleButton03} onPress={()=>{category('반려견')}}><Text style={styles.middleButtonText}>반려견</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.middleButton04} onPress={()=>{category('꿀팁 찜')}}><Text style={styles.middleButtonText}>꿀팁 찜</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.middleButton04} onPress={()=>{category('꿀팁 찜'); navigation.navigate('LikePage');}}><Text style={styles.middleButtonText}>꿀팁 찜</Text></TouchableOpacity>
       </ScrollView>
       <View style={styles.cardContainer}>
          { 
