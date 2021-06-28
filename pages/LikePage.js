@@ -40,7 +40,6 @@ export default function LikePage({navigation}) {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    marginTop: 10,
-    marginLeft: 10,
+    backgroundColor: "#fff",
   },
 })
