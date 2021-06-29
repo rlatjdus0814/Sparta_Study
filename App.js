@@ -14,8 +14,9 @@ export default function App() {
   console.disableYellowBox = true;
 
   return ( 
-  <NavigationContainer>
-    <StatusBar style="black" />
-    <StackNavigator/>
- </NavigationContainer>);
+    <NavigationContainer>
+      <StatusBar style="black" />
+      <StackNavigator/>
+    </NavigationContainer>
+  );
 }
