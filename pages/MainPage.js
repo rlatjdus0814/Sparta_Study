@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import main from '../assets/main.png';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
-import data from '../data.json';
 import Card from '../components/Card';
 import Loading from '../components/Loading';
 import { StatusBar } from 'expo-status-bar';
@@ -70,9 +69,6 @@ export default function MainPage({navigation, route}) {
       }))
     }
   }
-
-  let todayWeather = 10 + 17;
-  let todayCondition = "흐림"
 
   return ready ? <Loading/> : (
     <ScrollView style={styles.container}>

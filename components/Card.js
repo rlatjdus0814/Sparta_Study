@@ -3,7 +3,7 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from "react-native";
 
 export default function Card({content, navigation}) {
   return (
-    <TouchableOpacity style={styles.card} onPress={()=>{navigation.navigate('DetailPage', content)}}>
+    <TouchableOpacity style={styles.card} onPress={()=>{navigation.navigate('DetailPage', {idx:content.idx})}}>
       <Image style={styles.cardImage} source={{uri:content.image}}/>
       <View style={styles.cardText}>
         <Text style={styles.cardTitle} numberOfLines={1}>{content.title}</Text>

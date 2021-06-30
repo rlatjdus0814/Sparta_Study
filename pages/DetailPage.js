@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {View,Text,StyleSheet,Image, ScrollView, TouchableOpacity, Alert, Share} from 'react-native'
 import * as Linking from 'expo-linking';
+import {firebase_db} from '../firebaseConfig';
+import Constants from 'expo-constants';
 
 export default function DetailPage({navigation,route}){
+  let user_idx = Constants.installationId
+  console.log(user_idx)
   console.disableYellowBox = true;
   const [tip, setTip] = useState({
     "idx":9,
@@ -23,11 +27,19 @@ export default function DetailPage({navigation,route}){
       },
       headerTintColor: "#fff",
     })
-    setTip(route.params)
+    const { idx } = route.params;
+    firebase_db.ref('/tip/'+idx).once('value').then((snapshot) => {
+        let tip = snapshot.val();
+        setTip(tip)
+    });
   },[])
 
-  const popup = () => {
-      Alert.alert("팝업!!")
+  const like = () => {
+    const user_id = Constants.installationId;
+    firebase_db.ref('/like/'+user_id+'/'+ tip.idx).set(tip,function(error){
+      console.log(error)
+      Alert.alert("찜 완료!")
+    });
   }
 
   const share = () => {
@@ -47,7 +59,7 @@ export default function DetailPage({navigation,route}){
         <Text style={styles.title}>{tip.title}</Text>
         <Text style={styles.desc}>{tip.desc}</Text>
         <View style={styles.buttonGroup}>
-          <TouchableOpacity style={styles.button} onPress={()=>popup()}>
+          <TouchableOpacity style={styles.button} onPress={()=>like()}>
             <Text style={styles.buttonText}>팁 찜하기</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={()=>share()}>
