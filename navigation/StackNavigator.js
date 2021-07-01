@@ -15,12 +15,13 @@ const StackNavigator = () =>{
           backgroundColor: "white",
           borderBottomColor: "white",
           shadowColor: "white",
-          height:100,
+          height:70,
         },
         headerTitleAlign: "left",
         headerTintColor: "#000",
         headerBackTitleVisible: false
       }}
+      
     >
       <Stack.Screen name="MainPage" component={MainPage}/>
       <Stack.Screen name="DetailPage" component={DetailPage}/>
