@@ -1,7 +1,22 @@
 import React from "react"
-import {View, Text, Image, StyleSheet, TouchableOpacity, Button } from "react-native";
+import {View, Text, Image, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import {firebase_db} from '../firebaseConfig';
+import Constants from 'expo-constants';
 
-export default function LikeCard({content, navigation}) {
+export default function LikeCard({content, navigation, reload}) {
+
+  const detail = () => {
+    navigation.navigate('DetailPage', {idx:content.idx})
+  }
+
+  const remove = () => {
+    const user_id = Constants.installationId;
+      firebase_db.ref('/like/'+user_id+'/'+content.idx).remove().then(function(){
+        Alert.alert("삭제 완료");
+        reload()
+      })
+  }
+
   return (
     <View style={styles.cardView}>
       <View style={styles.card}>
@@ -13,10 +28,10 @@ export default function LikeCard({content, navigation}) {
         </View>
       </View>
       <View style={styles.buttons}>
-        <TouchableOpacity style={styles.buttonBorder} onPress={()=>{navigation.navigate('DetailPage', content)}}>
+        <TouchableOpacity style={styles.buttonBorder} onPress={()=>detail()}>
           <Text style={styles.buttonText}>자세히 보기</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonBorder}>
+        <TouchableOpacity style={styles.buttonBorder} onPress={()=>remove()}>
           <Text style={styles.buttonText}>찜 해제</Text>
         </TouchableOpacity>
       </View>
